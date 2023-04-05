@@ -13,14 +13,16 @@ public class ShootController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         centerPoint = GameObject.FindGameObjectWithTag("Center");
 
-        Vector3 direction = centerPoint.transform.position - transform.position;
-        rb.velocity = new Vector2 (direction.x, direction.y).normalized * 20f;
+        Vector3 _direction = centerPoint.transform.position - transform.position;
+        rb.velocity = new Vector2 (_direction.x, _direction.y).normalized * 20f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            GameController.instance.Score(collision.gameObject.GetComponent<EnemyController>().radius);
+
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

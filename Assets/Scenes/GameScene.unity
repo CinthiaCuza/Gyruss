@@ -503,9 +503,7 @@ MonoBehaviour:
   - {fileID: -1271142229, guid: 6b96612a33656114d99b15b9e74d8ba4, type: 3}
   - {fileID: -383076341, guid: 6b96612a33656114d99b15b9e74d8ba4, type: 3}
   - {fileID: 1335694959, guid: 6b96612a33656114d99b15b9e74d8ba4, type: 3}
-  amountSpawner: 0
-  currentAmountSpawner: 0
-  stopTime: 4
+  stopTime: 2
 --- !u!1 &2079019121
 GameObject:
   m_ObjectHideFlags: 0

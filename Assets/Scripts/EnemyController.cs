@@ -5,27 +5,35 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float radius = 0.5f;
-    public float speed = 5.0f;
-    public bool stopIncreaseRadius;
+    private float speed = 50f;
+    private float radiusTimer;
+
+    private void Start()
+    {
+        transform.position = new Vector3(0.05f, 0.05f, 0f);
+    }
 
     private void Update()
     {
+        radiusTimer += Time.deltaTime;
         Rotate();
     }
 
     void Rotate()
     {
-        if (!stopIncreaseRadius)
+        if (radiusTimer > 0.015f)
         {
-            radius += 0.5f;
+            speed = Random.Range(50, 80);
+            radiusTimer = 0;
+
+            if (radius < 3)
+            {
+                radius += 0.01f;
+                var _direction = (transform.position - GameController.instance.centerPoint.transform.position).normalized;
+                transform.position = _direction * radius;
+            }
         }
         
-        if (radius == 6)
-        {
-            stopIncreaseRadius = true;
-        }
-
         transform.RotateAround(GameController.instance.centerPoint.transform.position, Vector3.forward, speed * Time.deltaTime);
-        //transform.position += transform.forward * radius;
     }
 }

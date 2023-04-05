@@ -25,16 +25,16 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemies() 
     {
-        if (spawnTimer > 1)
+        if (spawnTimer > 0.5f)
         {
             currentAmountSpawner++;
             spawnTimer = 0;
 
             if (currentAmountSpawner < amountSpawner)
             {
-                GameObject newEnemy = Instantiate(enemy, GameController.instance.centerPoint.transform.position, transform.rotation);
-                int index = Random.Range(0, 19);
-                newEnemy.GetComponent<SpriteRenderer>().sprite = enemiesSprites[index];
+                GameObject _newEnemy = Instantiate(enemy, GameController.instance.centerPoint.transform.position, transform.rotation);
+                int _index = Random.Range(0, 19);
+                _newEnemy.GetComponent<SpriteRenderer>().sprite = enemiesSprites[_index];
             }
         }
 
