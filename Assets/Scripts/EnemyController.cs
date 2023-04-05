@@ -4,8 +4,28 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    void Update()
+    public float radius = 0.5f;
+    public float speed = 5.0f;
+    public bool stopIncreaseRadius;
+
+    private void Update()
     {
-        gameObject.transform.Rotate(0f, 0f, 8f * Time.deltaTime * 8f);
+        Rotate();
+    }
+
+    void Rotate()
+    {
+        if (!stopIncreaseRadius)
+        {
+            radius += 0.5f;
+        }
+        
+        if (radius == 6)
+        {
+            stopIncreaseRadius = true;
+        }
+
+        transform.RotateAround(GameController.instance.centerPoint.transform.position, Vector3.forward, speed * Time.deltaTime);
+        //transform.position += transform.forward * radius;
     }
 }
