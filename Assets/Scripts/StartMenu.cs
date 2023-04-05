@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     public List<GameObject> playerShipsList = new List<GameObject>();
+
+    public GameObject selectShipComponent;
+    public GameObject controlsComponent;
+
     public void SelectShip(int pos)
     {
         GameController.instance.PlaySFX("SelectShip");
@@ -19,5 +23,17 @@ public class StartMenu : MonoBehaviour
     {
         GameController.instance.PlaySFX("Click");
         SceneManager.LoadScene("Game");
+    }
+
+    public void ControlsButton()
+    {
+        selectShipComponent.SetActive(false);
+        controlsComponent.SetActive(true);
+    }
+
+    public void selectShipButton()
+    {
+        selectShipComponent.SetActive(true);
+        controlsComponent.SetActive(false);
     }
 }

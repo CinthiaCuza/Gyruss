@@ -15,10 +15,9 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     public int selectedShip = 0;
-    public bool noSFX;
 
-    public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public Sound[] sfxSounds;
+    public AudioSource sfxSource;
 
     private void Awake()
     {
@@ -30,21 +29,6 @@ public class GameController : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }
-    }
-
-    public void PlayMusic(string name)
-    {
-        Sound clipToPlay = Array.Find(musicSounds, x => x.clipName == name);
-
-        if (clipToPlay == null)
-        {
-            Debug.Log("Not found");
-        }
-        else
-        {
-            musicSource.clip = clipToPlay.clip;
-            musicSource.Play();
         }
     }
 

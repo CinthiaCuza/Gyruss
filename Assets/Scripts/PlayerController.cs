@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
             GameController.instance.PlaySFX("Laser");
             Instantiate(shoot, spawnPoint.transform.position, transform.rotation);
-            
         }
     }
 }

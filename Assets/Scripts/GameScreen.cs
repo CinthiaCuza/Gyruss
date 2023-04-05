@@ -13,36 +13,18 @@ public class GameScreen : MonoBehaviour
 
     public Button musicButton;
     public Button soundButton;
+    public Button restartButton;
+
+    private AudioSource music;
 
     private void Start()
     {
-        if (!GameController.instance.musicSource.mute)
-        {
-            GameController.instance.PlayMusic("Theme");
-        }
+        GameController.instance.sfxSource.mute = false;
+        music = gameObject.GetComponent<AudioSource>();
 
-        if (GameController.instance.noSFX)
-        {
-            GameController.instance.sfxSource.mute = true;
-        }
-
-        if (GameController.instance.musicSource.mute)
-        {
-            musicButton.image.sprite = soundButtonsSprites[0];
-        }
-        else
-        {
-            musicButton.image.sprite = soundButtonsSprites[1];
-        }
-
-        if (GameController.instance.sfxSource.mute)
-        {
-            soundButton.image.sprite = soundButtonsSprites[2];
-        }
-        else
-        {
-            soundButton.image.sprite = soundButtonsSprites[3];
-        }
+        musicButton.onClick.AddListener(ToggleMusic);
+        soundButton.onClick.AddListener(ToggleSFX);
+        restartButton.onClick.AddListener(RestartGame);
     }
 
     public void Score(float radiusEnemy)
@@ -51,13 +33,11 @@ public class GameScreen : MonoBehaviour
         {
             score += 3;
         }
-
-        if (radiusEnemy < 2 && radiusEnemy >= 1)
+        else if (radiusEnemy < 2 && radiusEnemy >= 1)
         {
             score += 2;
         }
-
-        if (radiusEnemy >= 2)
+        else 
         {
             score += 1;
         }
@@ -69,8 +49,8 @@ public class GameScreen : MonoBehaviour
     public void ToggleMusic()
     {
         GameController.instance.PlaySFX("Click");
-
-        if (GameController.instance.musicSource.mute)
+        
+        if(music.mute)
         {
             musicButton.image.sprite = soundButtonsSprites[1];
         }
@@ -79,7 +59,7 @@ public class GameScreen : MonoBehaviour
             musicButton.image.sprite = soundButtonsSprites[0];
         }
 
-        GameController.instance.musicSource.mute = !GameController.instance.musicSource.mute;
+        music.mute = !music.mute;
     }
 
     public void ToggleSFX()
@@ -88,12 +68,10 @@ public class GameScreen : MonoBehaviour
 
         if (GameController.instance.sfxSource.mute)
         {
-            GameController.instance.noSFX = false;
             soundButton.image.sprite = soundButtonsSprites[3];  
         }
         else
         {
-            GameController.instance.noSFX = true;
             soundButton.image.sprite = soundButtonsSprites[2];
         }
 
