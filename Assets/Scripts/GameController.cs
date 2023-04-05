@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     public int selectedShip = 0;
+    public bool noSFX;
 
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
@@ -59,15 +60,5 @@ public class GameController : MonoBehaviour
         {
             sfxSource.PlayOneShot(clipToPlay.clip);
         }
-    }
-
-    public void ToggleMusic()
-    {
-        musicSource.mute = !musicSource.mute;
-    }
-
-    public void ToggleSFX()
-    {
-        sfxSource.mute = !sfxSource.mute;
     }
 }

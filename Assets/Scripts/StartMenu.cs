@@ -18,6 +18,6 @@ public class StartMenu : MonoBehaviour
     public void StartGame()
     {
         GameController.instance.PlaySFX("Click");
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Game");
     }
 }
