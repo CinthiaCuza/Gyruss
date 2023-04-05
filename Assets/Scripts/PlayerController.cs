@@ -8,11 +8,14 @@ public class PlayerController : MonoBehaviour
     public GameObject spawnPoint;
 
     private float shootTimer = 0.35f; 
-    private float currentShootTimer = 0.35f;
+    private float currentShootTimer;
     private bool canShoot;
+
+    public List<Sprite> playerSprites = new List<Sprite>();
 
     private void Start()
     {
+        gameObject.GetComponent<SpriteRenderer>().sprite = playerSprites[GameController.instance.selectedShip];
         currentShootTimer = shootTimer;
     }
 
@@ -47,8 +50,10 @@ public class PlayerController : MonoBehaviour
         {
             canShoot = false;
             shootTimer = 0f;
-            
+
+            GameController.instance.PlaySFX("Laser");
             Instantiate(shoot, spawnPoint.transform.position, transform.rotation);
+            
         }
     }
 }

@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float radius = 0.5f;
-    private float speed = 50f;
+    public float radius;
+    private float speed;
     private float radiusTimer;
-
-    private void Start()
-    {
-        transform.position = new Vector3(0.05f, 0.05f, 0f);
-    }
 
     private void Update()
     {
@@ -21,19 +16,25 @@ public class EnemyController : MonoBehaviour
 
     void Rotate()
     {
-        if (radiusTimer > 0.015f)
+        if (radiusTimer > 0.02f)
         {
             speed = Random.Range(50, 80);
             radiusTimer = 0;
 
+            if (transform.localScale.x <= 0.7)
+            {
+                Vector3 _enemyScale = new Vector3(0.002f, 0.002f, 1f);
+                transform.localScale = transform.localScale + _enemyScale;
+            }
+
             if (radius < 3)
             {
                 radius += 0.01f;
-                var _direction = (transform.position - GameController.instance.centerPoint.transform.position).normalized;
+                var _direction = (transform.position - new Vector3(0, 0, 0)).normalized;
                 transform.position = _direction * radius;
             }
         }
-        
-        transform.RotateAround(GameController.instance.centerPoint.transform.position, Vector3.forward, speed * Time.deltaTime);
+
+        transform.RotateAround(new Vector3(0, 0, 0), Vector3.forward, speed * Time.deltaTime);
     }
 }

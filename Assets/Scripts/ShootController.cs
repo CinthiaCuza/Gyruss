@@ -6,8 +6,12 @@ public class ShootController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject centerPoint;
+
+    private GameScreen gameScreen;
+
     private void Start()
     {
+        gameScreen = FindObjectOfType<GameScreen>();
         Invoke("DesactivateShoot", 0.5f);
 
         rb = GetComponent<Rigidbody2D>();
@@ -21,7 +25,7 @@ public class ShootController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            GameController.instance.Score(collision.gameObject.GetComponent<EnemyController>().radius);
+            gameScreen.Score(collision.gameObject.GetComponent<EnemyController>().radius);
 
             Destroy(collision.gameObject);
             Destroy(gameObject);

@@ -8,13 +8,14 @@ public class Spawner : MonoBehaviour
     public List<Sprite> enemiesSprites = new List<Sprite>();
 
     private float spawnTimer;
-    private int amountSpawner;
-    private int currentAmountSpawner;
+    private int amountEnemies;
+    private int currentAmountEnemies;
+
     public int stopTime;
 
     private void Start()
     {
-        amountSpawner = Random.Range(2, 10);
+        amountEnemies = Random.Range(2, 10);
     }
 
     private void Update()
@@ -27,21 +28,23 @@ public class Spawner : MonoBehaviour
     {
         if (spawnTimer > 0.5f)
         {
-            currentAmountSpawner++;
+            currentAmountEnemies++;
             spawnTimer = 0;
 
-            if (currentAmountSpawner < amountSpawner)
+            if (currentAmountEnemies < amountEnemies)
             {
-                GameObject _newEnemy = Instantiate(enemy, GameController.instance.centerPoint.transform.position, transform.rotation);
+                GameObject _newEnemy = Instantiate(enemy, new Vector3(0.01f, 0.01f, 0f), transform.rotation);
                 int _index = Random.Range(0, 19);
                 _newEnemy.GetComponent<SpriteRenderer>().sprite = enemiesSprites[_index];
+
+                GameController.instance.PlaySFX("EnemySpawn");
             }
         }
 
-        if(currentAmountSpawner > amountSpawner + stopTime)
+        if(currentAmountEnemies > amountEnemies + stopTime)
         {
-            amountSpawner = Random.Range(2, 10);
-            currentAmountSpawner = 0;
+            amountEnemies = Random.Range(2, 10);
+            currentAmountEnemies = 0;
         }
     }
 }
