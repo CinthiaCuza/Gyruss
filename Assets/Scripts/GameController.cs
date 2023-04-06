@@ -35,14 +35,6 @@ public class GameController : MonoBehaviour
     public void PlaySFX(string name)
     {
         Sound clipToPlay = Array.Find(sfxSounds, x => x.clipName == name);
-
-        if (clipToPlay == null)
-        {
-            Debug.Log("Not found");
-        }
-        else
-        {
-            sfxSource.PlayOneShot(clipToPlay.clip);
-        }
+        sfxSource.PlayOneShot(clipToPlay.clip);
     }
 }

@@ -27,13 +27,13 @@ public class ShootController : MonoBehaviour
         {
             gameScreen.Score(collision.gameObject.GetComponent<EnemyController>().radius);
 
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyController>().Explosion();
             Destroy(gameObject);
         }
     }
 
     public void DesactivateShoot()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

@@ -31,7 +31,7 @@ public class StartMenu : MonoBehaviour
         controlsComponent.SetActive(true);
     }
 
-    public void selectShipButton()
+    public void SelectShipButton()
     {
         selectShipComponent.SetActive(true);
         controlsComponent.SetActive(false);
