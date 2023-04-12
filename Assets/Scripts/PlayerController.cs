@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private float currentShootTimer;
     private bool canShoot;
 
+    private bool leftArrowDown;
+    private bool rightArrowDown;
+
     public List<Sprite> playerSprites = new List<Sprite>();
 
     private void Start()
@@ -27,13 +30,31 @@ public class PlayerController : MonoBehaviour
 
     public void MovementPlayer()
     {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            rightArrowDown = true;
+            leftArrowDown = false;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            rightArrowDown = false;
+            leftArrowDown = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow)) leftArrowDown = false;
+        if (Input.GetKeyUp(KeyCode.RightArrow)) rightArrowDown = false;
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            gameObject.transform.Rotate(0f, 0f, 10f * Time.deltaTime * 10f);
+            if (leftArrowDown) gameObject.transform.Rotate(0f, 0f, -10f * Time.deltaTime * 10f);
+            else gameObject.transform.Rotate(0f, 0f, 10f * Time.deltaTime * 10f);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            gameObject.transform.Rotate(0f, 0f, -10f * Time.deltaTime * 10f);
+            if (rightArrowDown) gameObject.transform.Rotate(0f, 0f, 10f * Time.deltaTime * 10f);
+            else gameObject.transform.Rotate(0f, 0f, -10f * Time.deltaTime * 10f);
         }
     }
 
