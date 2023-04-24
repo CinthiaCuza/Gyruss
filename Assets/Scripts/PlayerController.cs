@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
     public GameObject shoot;
     public GameObject spawnPoint;
 
-    private float shootTimer = 0.35f; 
-    private float currentShootTimer;
-    private bool canShoot;
+    [SerializeField] private float shootTimer; 
 
+    private float currentShootTimer;
+
+    private bool canShoot;
     private bool leftArrowDown;
     private bool rightArrowDown;
 
@@ -62,10 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         shootTimer += Time.deltaTime;
 
-        if (shootTimer > currentShootTimer)
-        {
-            canShoot = true;
-        }
+        if (shootTimer > currentShootTimer) canShoot = true;
 
         if (Input.GetKey(KeyCode.Space) && canShoot)
         {

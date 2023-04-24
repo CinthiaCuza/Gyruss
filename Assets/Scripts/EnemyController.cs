@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float radius;
+    [HideInInspector] public float radius;
+    [SerializeField] private float minValueSpeed;
+    [SerializeField] private float maxValueSpeed;
+
     private float speed;
     private float radiusTimer;
 
@@ -20,7 +23,7 @@ public class EnemyController : MonoBehaviour
     {
         if (radiusTimer > 0.02f)
         {
-            speed = Random.Range(40, 90);
+            speed = Random.Range(minValueSpeed, maxValueSpeed);
             radiusTimer = 0;
 
             if (transform.localScale.x <= 0.7)

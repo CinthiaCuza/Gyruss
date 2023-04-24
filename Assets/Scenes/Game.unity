@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6203e9712685adb49b341bce285c253c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   textScore: {fileID: 1623419671}
   soundButtonsSprites:
   - {fileID: -1267936677, guid: f360bfdb78fff20419d266cedd715123, type: 3}
@@ -683,6 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 1275536103280939665, guid: f7224eea00f0a1b47b050b3c1655d7f2, type: 3}
   spawnPoint: {fileID: 2079019121}
+  shootTimer: 0.35
   playerSprites:
   - {fileID: 466495765, guid: 9655ad6d512c8f941956ef07cf224b80, type: 3}
   - {fileID: -1674964034, guid: 9655ad6d512c8f941956ef07cf224b80, type: 3}

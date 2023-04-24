@@ -11,11 +11,11 @@ public class Spawner : MonoBehaviour
     private int amountEnemies;
     private int currentAmountEnemies;
 
-    public int stopTime;
+    [SerializeField] private int stopTime;
 
     private void Start()
     {
-        amountEnemies = Random.Range(2, 10);
+        amountEnemies = Random.Range(2, 11);
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
             if (currentAmountEnemies < amountEnemies)
             {
                 GameObject _newEnemy = Instantiate(enemy, new Vector3(0.01f, 0.01f, 0f), transform.rotation);
-                int _index = Random.Range(0, 19);
+                int _index = Random.Range(0, 20);
                 _newEnemy.GetComponent<SpriteRenderer>().sprite = enemiesSprites[_index];
 
                 GameController.instance.PlaySFX("EnemySpawn");
@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
 
         if(currentAmountEnemies > amountEnemies + stopTime)
         {
-            amountEnemies = Random.Range(2, 10);
+            amountEnemies = Random.Range(2, 11);
             currentAmountEnemies = 0;
         }
     }
