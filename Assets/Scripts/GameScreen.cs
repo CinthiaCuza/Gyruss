@@ -17,15 +17,20 @@ public class GameScreen : MonoBehaviour
 
     private AudioSource music;
 
+    public GameObject gameOverPanel;
+
     private void Start()
     {
+        Time.timeScale = 1f;
+
         GameController.instance.sfxSource.mute = false;
         music = gameObject.GetComponent<AudioSource>();
 
         musicButton.onClick.AddListener(ToggleMusic);
         soundButton.onClick.AddListener(ToggleSFX);
-        restartButton.onClick.AddListener(RestartGame);
+        restartButton.onClick.AddListener(StartMenu);
     }
+
 
     public void Score(float radiusEnemy)
     {
@@ -57,9 +62,21 @@ public class GameScreen : MonoBehaviour
         GameController.instance.sfxSource.mute = !GameController.instance.sfxSource.mute;
     }
 
-    public void RestartGame()
+    public void StartMenu()
     {
         GameController.instance.PlaySFX("Click");
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        gameOverPanel.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        GameController.instance.PlaySFX("Click");
+        SceneManager.LoadScene("Game");
     }
 }

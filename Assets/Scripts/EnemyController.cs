@@ -13,10 +13,35 @@ public class EnemyController : MonoBehaviour
 
     public GameObject explosion;
 
+    private GameScreen gameScreen;
+
+    private void Start()
+    {
+        gameScreen = FindObjectOfType<GameScreen>();
+        Invoke("DestroyEnemy", 20f);
+    }
+
     private void Update()
     {
         radiusTimer += Time.deltaTime;
         Rotate();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shoot"))
+        {
+            gameScreen.Score(radius);
+            Explosion();
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().Explosion();
+            Explosion();
+            gameScreen.Invoke("GameOver", 0.12f);
+        }
     }
 
     void Rotate()
@@ -32,12 +57,12 @@ public class EnemyController : MonoBehaviour
                 transform.localScale = transform.localScale + _enemyScale;
             }
 
-            if (radius < 3)
-            {
-                radius += 0.01f;
-                var _direction = (transform.position - new Vector3(0, 0, 0)).normalized;
-                transform.position = _direction * radius;
-            }
+            // #1
+            radius += 0.01f;
+            var _direction = (transform.position - new Vector3(0, 0, 0)).normalized;
+            transform.position = _direction * radius;
+
+            //if (radius < 3) #1
         }
 
         transform.RotateAround(new Vector3(0, 0, 0), Vector3.forward, speed * Time.deltaTime);

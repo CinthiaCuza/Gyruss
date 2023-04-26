@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject shoot;
     public GameObject spawnPoint;
+    public GameObject explosion;
 
     [SerializeField] private float shootTimer; 
 
@@ -73,5 +74,17 @@ public class PlayerController : MonoBehaviour
             GameController.instance.PlaySFX("Laser");
             Instantiate(shoot, spawnPoint.transform.position, transform.rotation);
         }
+    }
+
+    public void Explosion()
+    {
+        explosion.SetActive(true);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Invoke("DestroyPlayer", 0.1f);
+    }
+
+    public void DestroyPlayer()
+    {
+        Destroy(gameObject);
     }
 }

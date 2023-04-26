@@ -22,17 +22,6 @@ public class ShootController : MonoBehaviour
         rb.velocity = new Vector2 (_direction.x, _direction.y).normalized * rbVelocity;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            gameScreen.Score(collision.gameObject.GetComponent<EnemyController>().radius);
-
-            collision.gameObject.GetComponent<EnemyController>().Explosion();
-            Destroy(gameObject);
-        }
-    }
-
     public void DesactivateShoot()
     {
         Destroy(gameObject);

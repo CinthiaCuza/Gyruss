@@ -10,10 +10,19 @@ public class StartMenu : MonoBehaviour
     public GameObject selectShipComponent;
     public GameObject controlsComponent;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+        SelectShip(GameController.instance.selectedShip);
+    }
+
+    public void PalySFX(string clipName)
+    {
+        GameController.instance.PlaySFX(clipName);
+    }
+
     public void SelectShip(int pos)
     {
-        GameController.instance.PlaySFX("SelectShip");
-
         playerShipsList[GameController.instance.selectedShip].transform.localScale = Vector3.one;
         GameController.instance.selectedShip = pos;
         playerShipsList[pos].transform.localScale = new Vector3(1.4f, 1.4f, 1f);
@@ -21,7 +30,6 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        GameController.instance.PlaySFX("Click");
         SceneManager.LoadScene("Game");
     }
 
@@ -35,5 +43,10 @@ public class StartMenu : MonoBehaviour
     {
         selectShipComponent.SetActive(true);
         controlsComponent.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
