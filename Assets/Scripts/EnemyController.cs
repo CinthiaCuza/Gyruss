@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
 
     public GameObject explosion;
 
-    private GameScreen gameScreen;
+    [HideInInspector] public GameScreen gameScreen;
 
     private void Start()
     {
@@ -29,15 +29,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Shoot"))
-        {
-            gameScreen.Score(radius);
-            Explosion();
-            Destroy(collision.gameObject);
-        }
-
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameController.instance.PlaySFX("Explosion");
             collision.gameObject.GetComponent<PlayerController>().Explosion();
             Explosion();
             gameScreen.Invoke("GameOver", 0.12f);
@@ -66,6 +60,12 @@ public class EnemyController : MonoBehaviour
         }
 
         transform.RotateAround(new Vector3(0, 0, 0), Vector3.forward, speed * Time.deltaTime);
+    }
+
+    public void Shooted()
+    {
+        gameScreen.Score(radius);
+        Explosion();
     }
 
     public void Explosion()

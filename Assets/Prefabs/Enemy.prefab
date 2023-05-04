@@ -4970,7 +4970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0
-  maxValueRadiusTimer: 0.02
   minValueSpeed: 40
   maxValueSpeed: 90
   explosion: {fileID: 1968686262}

@@ -2035,6 +2035,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 98e9328042de6ff41aa1d7802b691fe8, type: 3}
   - clipName: Score
     clip: {fileID: 8300000, guid: 2fd845208e0797c439323c510dd42a26, type: 3}
+  - clipName: GO
+    clip: {fileID: 8300000, guid: 8751ef26775f9834680488c81177b2e4, type: 3}
+  - clipName: Explosion
+    clip: {fileID: 8300000, guid: c10d8581ad652db48b15bec2645668f5, type: 3}
   sfxSource: {fileID: 1245630487}
 --- !u!4 &1245630486
 Transform:

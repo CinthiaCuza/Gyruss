@@ -6,13 +6,11 @@ public class ShootController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameObject centerPoint;
-    private GameScreen gameScreen;
 
     [SerializeField] private float rbVelocity;
 
     private void Start()
     {
-        gameScreen = FindObjectOfType<GameScreen>();
         centerPoint = GameObject.FindGameObjectWithTag("Center");
         rb = GetComponent<Rigidbody2D>();
 
@@ -20,6 +18,15 @@ public class ShootController : MonoBehaviour
 
         Vector3 _direction = centerPoint.transform.position - transform.position;
         rb.velocity = new Vector2 (_direction.x, _direction.y).normalized * rbVelocity;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyController>().Shooted();
+            Destroy(gameObject);
+        }
     }
 
     public void DesactivateShoot()

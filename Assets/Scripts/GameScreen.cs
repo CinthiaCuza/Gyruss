@@ -70,6 +70,8 @@ public class GameScreen : MonoBehaviour
 
     public void GameOver()
     {
+        music.mute = !music.mute;
+        GameController.instance.PlaySFX("GO");
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
     }
