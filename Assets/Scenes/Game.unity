@@ -244,13 +244,14 @@ GameObject:
   - component: {fileID: 319076813}
   - component: {fileID: 319076815}
   - component: {fileID: 319076814}
+  - component: {fileID: 319076816}
   m_Layer: 5
   m_Name: StartNumbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &319076813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -291,7 +292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2086900702, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
+  m_Sprite: {fileID: -1603631441, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -309,6 +310,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319076812}
   m_CullTransparentMesh: 1
+--- !u!111 &319076816
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319076812}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5891f3e9060caa94488189c3c68acbef, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5891f3e9060caa94488189c3c68acbef, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &422829925
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,10 +716,10 @@ MonoBehaviour:
   soundButton: {fileID: 790734535}
   gameOverPanel: {fileID: 195033736}
   startNumbersList:
-  - {fileID: -2086900702, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
-  - {fileID: -596498224, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
-  - {fileID: -1005644809, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
-  - {fileID: 834462736, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
+  - {fileID: -1603631441, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
+  - {fileID: 2117563501, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
+  - {fileID: 1393756247, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
+  - {fileID: -1352289980, guid: 73b39570e0e3e264aaf6e1ff6ccabeb2, type: 3}
   UIElements: {fileID: 673580742}
   startNumber: {fileID: 319076814}
   player: {fileID: 530684890}

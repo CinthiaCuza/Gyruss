@@ -122,7 +122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 102
+        width: 104
         height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96be864b544c637419227fb5d51f2e95
-      internalID: 834462736
+      spriteID: 7c3a98f2a3a145c4299b243c7f50dea3
+      internalID: -1352289980
       vertices: []
       indices: 
       edges: []
@@ -141,9 +141,9 @@ TextureImporter:
       name: Numbers_1
       rect:
         serializedVersion: 2
-        x: 102
+        x: 104
         y: 0
-        width: 102
+        width: 104
         height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bffc04971219a114c882d0ad57db589b
-      internalID: -1005644809
+      spriteID: 22a88a2e2d75d034a8e0b0f9d8421160
+      internalID: 1393756247
       vertices: []
       indices: 
       edges: []
@@ -162,9 +162,9 @@ TextureImporter:
       name: Numbers_2
       rect:
         serializedVersion: 2
-        x: 204
+        x: 208
         y: 0
-        width: 102
+        width: 104
         height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 296fc428b5a6eb34d8c2aa59062b0294
-      internalID: -596498224
+      spriteID: b040c0cbe24ad2147803b09cfc3afff7
+      internalID: 2117563501
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
       name: Numbers_3
       rect:
         serializedVersion: 2
-        x: 306
+        x: 312
         y: 0
-        width: 102
+        width: 104
         height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fb2cdfcd49d70642adfa3225f5c6fac
-      internalID: -2086900702
+      spriteID: 046d5be4a3f106145b4110874fa760ad
+      internalID: -1603631441
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Numbers_0: 834462736
-      Numbers_1: -1005644809
-      Numbers_2: -596498224
-      Numbers_3: -2086900702
+      Numbers_0: -1352289980
+      Numbers_1: 1393756247
+      Numbers_2: 2117563501
+      Numbers_3: -1603631441
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -39,10 +39,12 @@ public class GameScreen : MonoBehaviour
     {
         for (int i = 0; i < startNumbersList.Count; i++)
         {
+            startNumber.gameObject.SetActive(true);
             startNumber.sprite = startNumbersList[i];
             GameController.instance.PlaySFX("Count");
-
+            
             yield return new WaitForSeconds(1f);
+            startNumber.gameObject.SetActive(false);
         }
 
         if (GameController.instance.musicOff)
@@ -55,7 +57,6 @@ public class GameScreen : MonoBehaviour
             music.Play();
         }
 
-        startNumber.gameObject.SetActive(false);
         UIElements.SetActive(true);
         player.SetActive(true);
 
