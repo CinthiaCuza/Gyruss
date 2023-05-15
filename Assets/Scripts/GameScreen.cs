@@ -9,26 +9,57 @@ public class GameScreen : MonoBehaviour
 {
     private int score;
     public TMP_Text textScore;
-    public List<Sprite> soundButtonsSprites = new List<Sprite>();
 
     public Button musicButton;
     public Button soundButton;
-    public Button restartButton;
 
     private AudioSource music;
 
     public GameObject gameOverPanel;
 
+    public List<Sprite> startNumbersList = new List<Sprite>();
+    public GameObject UIElements;
+    public Image startNumber;
+    public GameObject player;
+
     private void Start()
     {
         Time.timeScale = 1f;
-
-        GameController.instance.sfxSource.mute = false;
         music = gameObject.GetComponent<AudioSource>();
 
-        musicButton.onClick.AddListener(ToggleMusic);
-        soundButton.onClick.AddListener(ToggleSFX);
-        restartButton.onClick.AddListener(StartMenu);
+        StartCoroutine(StartCount());
+
+        if (GameController.instance.sfxOff) soundButton.image.sprite = GameController.instance.soundButtonsSprites[2];
+        
+        
+
+    }
+
+    IEnumerator StartCount()
+    {
+        for (int i = 0; i < startNumbersList.Count; i++)
+        {
+            startNumber.sprite = startNumbersList[i];
+            GameController.instance.PlaySFX("Count");
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        if (GameController.instance.musicOff)
+        {
+            musicButton.image.sprite = GameController.instance.soundButtonsSprites[0];
+            music.mute = true;
+        }
+        else
+        {
+            music.Play();
+        }
+
+        startNumber.gameObject.SetActive(false);
+        UIElements.SetActive(true);
+        player.SetActive(true);
+
+        GameController.instance.onGame = true;
     }
 
 
@@ -45,32 +76,29 @@ public class GameScreen : MonoBehaviour
     public void ToggleMusic()
     {
         GameController.instance.PlaySFX("Click");
-        
-        if(music.mute) musicButton.image.sprite = soundButtonsSprites[1];
-        else musicButton.image.sprite = soundButtonsSprites[0];
 
+        if (GameController.instance.musicOff) musicButton.image.sprite = GameController.instance.soundButtonsSprites[1];
+        else musicButton.image.sprite = GameController.instance.soundButtonsSprites[0];
+
+        GameController.instance.musicOff = !GameController.instance.musicOff;
         music.mute = !music.mute;
     }
 
     public void ToggleSFX()
     {
-        GameController.instance.PlaySFX("Click");
-
-        if (GameController.instance.sfxSource.mute) soundButton.image.sprite = soundButtonsSprites[3];
-        else soundButton.image.sprite = soundButtonsSprites[2];
-
-        GameController.instance.sfxSource.mute = !GameController.instance.sfxSource.mute;
+        GameController.instance.ToggleSFX(soundButton);
     }
 
     public void StartMenu()
     {
         GameController.instance.PlaySFX("Click");
+        GameController.instance.onGame = false;
         SceneManager.LoadScene("StartMenu");
     }
 
     public void GameOver()
     {
-        music.mute = !music.mute;
+        music.mute = true;
         GameController.instance.PlaySFX("GO");
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
@@ -79,6 +107,7 @@ public class GameScreen : MonoBehaviour
     public void RestartGame()
     {
         GameController.instance.PlaySFX("Click");
+        GameController.instance.onGame = false;
         SceneManager.LoadScene("Game");
     }
 }

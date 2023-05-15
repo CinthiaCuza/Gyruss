@@ -14,7 +14,7 @@ public class ShootController : MonoBehaviour
         centerPoint = GameObject.FindGameObjectWithTag("Center");
         rb = GetComponent<Rigidbody2D>();
 
-        Invoke("DesactivateShoot", 0.5f);
+        StartCoroutine(GameController.instance.DestroyObject(gameObject, 0.5f));
 
         Vector3 _direction = centerPoint.transform.position - transform.position;
         rb.velocity = new Vector2 (_direction.x, _direction.y).normalized * rbVelocity;
@@ -27,10 +27,5 @@ public class ShootController : MonoBehaviour
             collision.gameObject.GetComponent<EnemyController>().Shooted();
             Destroy(gameObject);
         }
-    }
-
-    public void DesactivateShoot()
-    {
-        Destroy(gameObject);
     }
 }

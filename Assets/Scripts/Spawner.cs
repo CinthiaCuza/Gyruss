@@ -20,8 +20,12 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        spawnTimer += Time.deltaTime;
-        SpawnEnemies();
+        if (GameController.instance.onGame)
+        {
+            spawnTimer += Time.deltaTime;
+            SpawnEnemies();
+        }
+        
     }
 
     private void SpawnEnemies() 

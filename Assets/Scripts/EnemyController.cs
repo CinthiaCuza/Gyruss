@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         gameScreen = FindObjectOfType<GameScreen>();
-        Invoke("DestroyEnemy", 20f);
+        StartCoroutine(GameController.instance.DestroyObject(gameObject, 20f));
     }
 
     private void Update()
@@ -26,6 +27,7 @@ public class EnemyController : MonoBehaviour
         radiusTimer += Time.deltaTime;
         Rotate();
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -42,7 +44,7 @@ public class EnemyController : MonoBehaviour
     {
         if (radiusTimer > 0.02f)
         {
-            speed = Random.Range(minValueSpeed, maxValueSpeed);
+            speed = UnityEngine.Random.Range(minValueSpeed, maxValueSpeed);
             radiusTimer = 0;
 
             if (transform.localScale.x <= 0.7)
@@ -72,11 +74,6 @@ public class EnemyController : MonoBehaviour
     {
         explosion.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Invoke("DestroyEnemy", 0.1f);
-    }
-
-    public void DestroyEnemy()
-    {
-        Destroy(gameObject);
+        StartCoroutine(GameController.instance.DestroyObject(gameObject, 0.1f));
     }
 }

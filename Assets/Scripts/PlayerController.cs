@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,8 +27,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        MovementPlayer();
-        Shoot();
+        if (GameController.instance.onGame)
+        {
+            MovementPlayer();
+            Shoot();
+        }
     }
 
     public void MovementPlayer()
@@ -80,11 +84,6 @@ public class PlayerController : MonoBehaviour
     {
         explosion.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Invoke("DestroyPlayer", 0.1f);
-    }
-
-    public void DestroyPlayer()
-    {
-        Destroy(gameObject);
+        StartCoroutine(GameController.instance.DestroyObject(gameObject, 0.1f));
     }
 }
