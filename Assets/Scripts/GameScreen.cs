@@ -27,15 +27,12 @@ public class GameScreen : MonoBehaviour
         Time.timeScale = 1f;
         music = gameObject.GetComponent<AudioSource>();
 
-        StartCoroutine(StartCount());
+        StartCoroutine(CountDown());
 
         if (GameController.instance.sfxOff) soundButton.image.sprite = GameController.instance.soundButtonsSprites[2];
-        
-        
-
     }
 
-    IEnumerator StartCount()
+    IEnumerator CountDown()
     {
         for (int i = 0; i < startNumbersList.Count; i++)
         {

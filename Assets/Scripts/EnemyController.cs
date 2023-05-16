@@ -47,18 +47,18 @@ public class EnemyController : MonoBehaviour
             speed = UnityEngine.Random.Range(minValueSpeed, maxValueSpeed);
             radiusTimer = 0;
 
-            if (transform.localScale.x <= 0.7)
-            {
-                Vector3 _enemyScale = new Vector3(0.002f, 0.002f, 1f);
-                transform.localScale = transform.localScale + _enemyScale;
-            }
-
             // #1
+            Vector3 _enemyScale = new Vector3(0.002f, 0.002f, 1f);
+            transform.localScale = transform.localScale + _enemyScale;
+
+            //if (transform.localScale.x <= 0.7) #2
+
+            // #2
             radius += 0.01f;
             var _direction = (transform.position - new Vector3(0, 0, 0)).normalized;
             transform.position = _direction * radius;
 
-            //if (radius < 3) #1
+            //if (radius < 3) #2
         }
 
         transform.RotateAround(new Vector3(0, 0, 0), Vector3.forward, speed * Time.deltaTime);
