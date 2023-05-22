@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f360bfdb78fff20419d266cedd715123
+guid: f128619fd08a8974f83609d3544060b6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameButtons_0
+      name: GameButtons1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc71d48e3ea730d4cb3adc2bd70afc86
-      internalID: -1267936677
+      spriteID: 8650a19c89036544bac243fa483f23e7
+      internalID: 928606459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameButtons_1
+      name: GameButtons1_1
       rect:
         serializedVersion: 2
         x: 76
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e8f37a626848d6469ba5569046f792d
-      internalID: -629466218
+      spriteID: 644e54b45c804ef49bc450699f5fbc97
+      internalID: 638662791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameButtons_2
+      name: GameButtons1_2
       rect:
         serializedVersion: 2
         x: 152
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d327732a580230a4d9567201e9664ff6
-      internalID: -1711106781
+      spriteID: 72790641bd693534b82f1b6b288664c5
+      internalID: 297225389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameButtons_3
+      name: GameButtons1_3
       rect:
         serializedVersion: 2
         x: 228
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a11d280bf95c1ce4f980836eb63d8ac5
-      internalID: 1966847125
+      spriteID: 45d4d719f8f766f4ab1582e62aeb884e
+      internalID: 940041939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GameButtons_4
+      name: GameButtons1_4
       rect:
         serializedVersion: 2
         x: 304
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57e09ecf1797e40439d25f37fcb6aeaa
-      internalID: -264235720
+      spriteID: 93ab1d9a096a2fb4d937da111774a03d
+      internalID: 504437773
       vertices: []
       indices: 
       edges: []
@@ -232,11 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GameButtons_0: -1267936677
-      GameButtons_1: -629466218
-      GameButtons_2: -1711106781
-      GameButtons_3: 1966847125
-      GameButtons_4: -264235720
+      GameButtons1_0: 928606459
+      GameButtons1_1: 638662791
+      GameButtons1_2: 297225389
+      GameButtons1_3: 940041939
+      GameButtons1_4: 504437773
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
