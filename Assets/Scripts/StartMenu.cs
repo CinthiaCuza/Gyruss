@@ -17,6 +17,11 @@ public class StartMenu : MonoBehaviour
         if (GameController.instance.sfxOff) soundButton.image.sprite = GameController.instance.soundButtonsSprites[2];
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) ExitGame();
+    }
+
     public void PalySFX(string clipName)
     {
         GameController.instance.PlaySFX(clipName);

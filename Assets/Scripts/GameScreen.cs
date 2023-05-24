@@ -32,6 +32,11 @@ public class GameScreen : MonoBehaviour
         if (GameController.instance.sfxOff) soundButton.image.sprite = GameController.instance.soundButtonsSprites[2];
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) StartMenu();
+    }
+
     IEnumerator CountDown()
     {
         for (int i = 0; i < startNumbersList.Count; i++)

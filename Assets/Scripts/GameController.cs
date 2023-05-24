@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class Sound
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 
     public void PlaySFX(string name)
     {
