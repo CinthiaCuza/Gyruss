@@ -40,8 +40,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    
-
     public void PlaySFX(string name)
     {
         if (!sfxOff)

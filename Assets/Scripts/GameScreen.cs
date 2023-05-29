@@ -22,6 +22,8 @@ public class GameScreen : MonoBehaviour
     public Image startNumber;
     public GameObject player;
 
+    public GameObject mobileController;
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -30,6 +32,7 @@ public class GameScreen : MonoBehaviour
         StartCoroutine(CountDown());
 
         if (GameController.instance.sfxOff) soundButton.image.sprite = GameController.instance.soundButtonsSprites[2];
+        if (SystemInfo.deviceType == DeviceType.Handheld) mobileController.SetActive(true);
     }
 
     private void Update()

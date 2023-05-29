@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,8 +31,18 @@ public class PlayerController : MonoBehaviour
         if (GameController.instance.onGame)
         {
             MovementPlayer();
-            Shoot();
+            Shoot(false);
         }
+    }
+
+    public void ClickLeftButton()
+    {
+        gameObject.transform.Rotate(0f, 0f, -10f * Time.deltaTime * 10f);
+    }
+
+    public void ClickRightButton()
+    {
+        gameObject.transform.Rotate(0f, 0f, 10f * Time.deltaTime * 10f);
     }
 
     public void MovementPlayer()
@@ -64,20 +75,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void Shoot(bool clickShoot)
     {
         shootTimer += Time.deltaTime;
 
         if (shootTimer > currentShootTimer) canShoot = true;
 
-        if (Input.GetKey(KeyCode.Space) && canShoot)
+        if (canShoot)
         {
-            canShoot = false;
-            shootTimer = 0f;
+            if (Input.GetKey(KeyCode.Space) || clickShoot)
+            {
+                canShoot = false;
+                shootTimer = 0f;
 
-            GameController.instance.PlaySFX("Laser");
-            Instantiate(shoot, spawnPoint.transform.position, spawnPoint.transform.rotation);
+                GameController.instance.PlaySFX("Laser");
+                Instantiate(shoot, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+                clickShoot = false;
+            }
         }
+        
     }
 
     public void Explosion()

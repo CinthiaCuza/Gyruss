@@ -10,10 +10,15 @@ public class StartMenu : MonoBehaviour
 
     public Button soundButton;
 
+    public GameObject controlButton;
+
     private void Start()
     {
         Time.timeScale = 1f;
+
         SelectShip(GameController.instance.selectedShip);
+
+        if (SystemInfo.deviceType == DeviceType.Handheld) controlButton.SetActive(false);
         if (GameController.instance.sfxOff) soundButton.image.sprite = GameController.instance.soundButtonsSprites[2];
     }
 
