@@ -30,19 +30,28 @@ public class PlayerController : MonoBehaviour
     {
         if (GameController.instance.onGame)
         {
-            MovementPlayer();
-            Shoot(false);
+            if (SystemInfo.deviceType == DeviceType.Handheld)
+            {
+                if (leftArrowDown) gameObject.transform.Rotate(0f, 0f, -10f * Time.deltaTime * 10f);
+                if (rightArrowDown) gameObject.transform.Rotate(0f, 0f, 10f * Time.deltaTime * 10f);
+            }
+            else
+            {
+                MovementPlayer();
+            }
         }
+
+        Shoot(false);
     }
 
-    public void ClickLeftButton()
+    public void ClickLeft(bool isDown)
     {
-        gameObject.transform.Rotate(0f, 0f, -10f * Time.deltaTime * 10f);
+        leftArrowDown = isDown;
     }
 
-    public void ClickRightButton()
+    public void ClickRight(bool isDown)
     {
-        gameObject.transform.Rotate(0f, 0f, 10f * Time.deltaTime * 10f);
+        rightArrowDown = isDown;
     }
 
     public void MovementPlayer()
@@ -77,24 +86,26 @@ public class PlayerController : MonoBehaviour
 
     public void Shoot(bool clickShoot)
     {
-        shootTimer += Time.deltaTime;
-
-        if (shootTimer > currentShootTimer) canShoot = true;
-
-        if (canShoot)
+        if (GameController.instance.onGame)
         {
-            if (Input.GetKey(KeyCode.Space) || clickShoot)
+            shootTimer += Time.deltaTime;
+
+            if (shootTimer > currentShootTimer) canShoot = true;
+
+            if (canShoot)
             {
-                canShoot = false;
-                shootTimer = 0f;
+                if (Input.GetKey(KeyCode.Space) || clickShoot)
+                {
+                    canShoot = false;
+                    shootTimer = 0f;
 
-                GameController.instance.PlaySFX("Laser");
-                Instantiate(shoot, spawnPoint.transform.position, spawnPoint.transform.rotation);
+                    GameController.instance.PlaySFX("Laser");
+                    Instantiate(shoot, spawnPoint.transform.position, spawnPoint.transform.rotation);
 
-                clickShoot = false;
+                    clickShoot = false;
+                }
             }
         }
-        
     }
 
     public void Explosion()
