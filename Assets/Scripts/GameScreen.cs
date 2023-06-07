@@ -107,6 +107,7 @@ public class GameScreen : MonoBehaviour
         music.mute = true;
         GameController.instance.PlaySFX("GO");
         Time.timeScale = 0f;
+        GameController.instance.onGame = false;
         gameOverPanel.SetActive(true);
     }
 
