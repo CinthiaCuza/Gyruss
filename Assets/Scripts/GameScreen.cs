@@ -55,7 +55,7 @@ public class GameScreen : MonoBehaviour
         if (GameController.instance.musicOff)
         {
             musicButton.image.sprite = GameController.instance.soundButtonsSprites[0];
-            music.mute = true;
+            music.Stop();
         }
         else
         {
@@ -83,11 +83,18 @@ public class GameScreen : MonoBehaviour
     {
         GameController.instance.PlaySFX("Click");
 
-        if (GameController.instance.musicOff) musicButton.image.sprite = GameController.instance.soundButtonsSprites[1];
-        else musicButton.image.sprite = GameController.instance.soundButtonsSprites[0];
-
-        GameController.instance.musicOff = !GameController.instance.musicOff;
-        music.mute = !music.mute;
+        if (GameController.instance.musicOff)
+        {
+            musicButton.image.sprite = GameController.instance.soundButtonsSprites[1];
+            music.Play();
+            GameController.instance.musicOff = false;
+        }
+        else
+        {
+            musicButton.image.sprite = GameController.instance.soundButtonsSprites[0];
+            music.Stop();
+            GameController.instance.musicOff = true;
+        }
     }
 
     public void ToggleSFX()
@@ -104,7 +111,7 @@ public class GameScreen : MonoBehaviour
 
     public void GameOver()
     {
-        music.mute = true;
+        music.Stop();
         GameController.instance.PlaySFX("GO");
         Time.timeScale = 0f;
         GameController.instance.onGame = false;

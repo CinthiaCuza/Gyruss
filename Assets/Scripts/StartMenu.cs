@@ -27,7 +27,7 @@ public class StartMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) ExitGame();
     }
 
-    public void PalySFX(string clipName)
+    public void PlaySFX(string clipName)
     {
         GameController.instance.PlaySFX(clipName);
     }
